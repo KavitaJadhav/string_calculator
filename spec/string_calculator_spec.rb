@@ -34,5 +34,13 @@ RSpec.describe StringCalculator, 'model' do
         expect(string_calculator.add("1\n2,3")).to eq(6)
       end
     end
+
+    context 'when delimeter is given as part of number ' do
+      it 'should return sum of given numbers including numbers separated by given delimeter' do
+        string_calculator = StringCalculator.new
+
+        expect(string_calculator.add("//;\n1;2")).to eq(3)
+      end
+    end
   end
 end
