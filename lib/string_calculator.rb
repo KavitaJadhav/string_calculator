@@ -5,9 +5,11 @@ class StringCalculator
     if numbers.start_with?('//')
       default_delimeter = numbers.split(/\n/)[0].gsub('//', '')
       numbers.gsub!("//#{default_delimeter}\n", '')
-      numbers.split(/\n|,|#{default_delimeter}/).sum(&:to_i)
+      delimeters = /\n|,|#{default_delimeter}/
     else
-      numbers.split(/\n|,/).sum(&:to_i)
+      delimeters = /\n|,/
     end
+    
+    numbers.split(delimeters).sum(&:to_i)
   end
 end
