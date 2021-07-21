@@ -10,5 +10,13 @@ RSpec.describe StringCalculator, 'model' do
         expect(string_calculator.add('')).to eq(0)
       end
     end
+
+    context 'when single number is given as string input' do
+      it 'should return same number' do
+        string_calculator = StringCalculator.new
+
+        expect(string_calculator.add('1')).to eq(1)
+      end
+    end
   end
 end
