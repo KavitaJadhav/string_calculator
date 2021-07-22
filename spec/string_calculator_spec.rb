@@ -45,6 +45,12 @@ RSpec.describe StringCalculator, 'model' do
         expect {string_calculator.add("//;\n1;-2\n3,-4\n5,-6")}.to raise_error(StandardError, 'negatives not allowed: -2,-4,-6')
       end
     end
+
+    context 'when numbers include values beyond 1000' do
+      it 'should return sum of values upto 1000' do
+        expect(string_calculator.add("//;\n1000;1001\n999,2000")).to eq(1999)
+      end
+    end
   end
 
   describe '#called_count' do
