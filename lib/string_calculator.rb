@@ -10,7 +10,7 @@ class StringCalculator
 
     values = values_from(numbers)
     negative_values = values.select {|value| value < 0}
-    raise StandardError.new "negatives not allowed: #{negative_values.join(',')}" unless negative_values.empty?
+    raise NegativeValueError, negative_values unless negative_values.empty?
 
     values.reject! {|value| value > 1000}
     values.sum
