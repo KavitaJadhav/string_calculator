@@ -42,5 +42,13 @@ RSpec.describe StringCalculator, 'model' do
         expect(string_calculator.add("//;\n1;2")).to eq(3)
       end
     end
+
+    context 'when numbers include negative values' do
+      it 'should thow an error as negatives not allowed along with negative number' do
+        string_calculator = StringCalculator.new
+
+        expect {string_calculator.add("//;\n1;-2\n3")}.to raise_error(StandardError, 'negatives not allowed: -2')
+      end
+    end
   end
 end
