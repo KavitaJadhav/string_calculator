@@ -47,7 +47,7 @@ class StringCalculator
   def default_delimeters numbers
     delimeter_string = numbers.split(/\n/)[0]
     delimeter_string.gsub!('//', '')
-    delimeter_string.gsub!('[', '')
+    delimeter_string.gsub!('[', '') #Todo: Refactor logic to get multiple delimeters withing [] brackets
     delimeter_string.split(']')
   end
 end
