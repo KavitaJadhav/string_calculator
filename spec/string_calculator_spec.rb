@@ -46,4 +46,13 @@ RSpec.describe StringCalculator, 'model' do
       end
     end
   end
+
+  describe '#called_count' do
+    it 'should return number of times add method was invoked on instance' do
+      string_calculator.add("1")
+      string_calculator.add("1,2")
+
+      expect(string_calculator.called_count).to eq(2)
+    end
+  end
 end
