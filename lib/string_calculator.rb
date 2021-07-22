@@ -1,7 +1,13 @@
 class StringCalculator
   def add numbers
     return 0 if numbers.empty?
-    values_from(numbers).sum
+    values = values_from(numbers)
+
+    values.each do |value|
+      raise StandardError.new "negatives not allowed: #{value}" if value < 0
+    end
+
+    values.sum
   end
 
   private
