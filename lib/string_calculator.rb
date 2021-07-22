@@ -45,6 +45,8 @@ class StringCalculator
   end
 
   def default_delimeter numbers
-    numbers.split(/\n/)[0].gsub('//', '')
+    delimeter_string = numbers.split(/\n/)[0]
+    delimeter_string = delimeter_string.delete('[]')
+    delimeter_string.gsub('//', '')
   end
 end
