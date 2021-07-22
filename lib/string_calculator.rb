@@ -4,7 +4,7 @@ class StringCalculator
   end
 
   def add numbers
-    @add_method_call_count += 1
+    increment_add_call_count
 
     return 0 if numbers.empty?
 
@@ -19,6 +19,10 @@ class StringCalculator
   end
 
   private
+
+  def increment_add_call_count
+    @add_method_call_count += 1
+  end
 
   def values_from numbers
     delimiters = [',', "\n"]
