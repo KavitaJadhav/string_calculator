@@ -1,5 +1,11 @@
 class StringCalculator
+  def initialize
+    @add_method_call_count = 0
+  end
+
   def add numbers
+    @add_method_call_count += 1
+
     return 0 if numbers.empty?
 
     values = values_from(numbers)
@@ -9,7 +15,7 @@ class StringCalculator
   end
 
   def called_count
-    2
+    @add_method_call_count
   end
 
   private
