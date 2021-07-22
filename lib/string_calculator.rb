@@ -1,12 +1,10 @@
 class StringCalculator
   def add numbers
     return 0 if numbers.empty?
+
     values = values_from(numbers)
-
-    values.each do |value|
-      raise StandardError.new "negatives not allowed: #{value}" if value < 0
-    end
-
+    negative_values = values.select {|value| value < 0}
+    raise StandardError.new "negatives not allowed: #{negative_values.join(',')}" unless negative_values.empty?
     values.sum
   end
 
