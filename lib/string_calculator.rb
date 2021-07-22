@@ -30,8 +30,8 @@ class StringCalculator
     delimiters = [',', "\n"]
 
     if numbers.start_with?('//')
-      default_delimeter = default_delimeter numbers
-      delimiters << default_delimeter
+      default_delimeter = default_delimeters numbers
+      delimiters = delimiters + default_delimeter
 
       numbers = remove_default_delimeter numbers
     end
@@ -40,12 +40,14 @@ class StringCalculator
   end
 
   def remove_default_delimeter numbers
-    delimeter = default_delimeter numbers
-    numbers.gsub("//#{delimeter}\n", '')
+    delimeters_string = numbers.split(/\n/)[0]
+    numbers.gsub("#{delimeters_string}\n", '')
   end
 
-  def default_delimeter numbers
+  def default_delimeters numbers
     delimeter_string = numbers.split(/\n/)[0]
-    delimeter_string.delete!('//[]')
+    delimeter_string.gsub!('//', '')
+    delimeter_string.gsub!('[', '')
+    delimeter_string.split(']')
   end
 end
