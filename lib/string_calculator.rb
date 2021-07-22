@@ -1,7 +1,7 @@
 class StringCalculator
   def add numbers
     return 0 if numbers.empty?
-    values_from(numbers).sum(&:to_i)
+    values_from(numbers).sum
   end
 
   private
@@ -16,7 +16,7 @@ class StringCalculator
       numbers = remove_default_delimeter numbers
     end
 
-    numbers.split(Regexp.union(delimiters))
+    numbers.split(Regexp.union(delimiters)).map(&:to_i)
   end
 
   def remove_default_delimeter numbers
