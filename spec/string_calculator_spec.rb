@@ -51,6 +51,12 @@ RSpec.describe StringCalculator, 'model' do
         expect(string_calculator.add("//;\n1000;1001\n999,2000")).to eq(1999)
       end
     end
+
+    context 'when default delimeter contains more that one characters' do
+      it 'should return sum of values' do
+        expect(string_calculator.add("//[***]\n1***2***3")).to eq(6)
+      end
+    end
   end
 
   describe '#called_count' do
