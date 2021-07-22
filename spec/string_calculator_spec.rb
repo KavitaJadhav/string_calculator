@@ -63,6 +63,12 @@ RSpec.describe StringCalculator, 'model' do
         expect(string_calculator.add("//[*][%]\n1*2%3")).to eq(6)
       end
     end
+
+    context 'when number contains multiple default long delimeters' do
+      it 'should return sum of values separated by all delimeters' do
+        expect(string_calculator.add("//[**][%%]\n1**2%%3")).to eq(6)
+      end
+    end
   end
 
   describe '#called_count' do
