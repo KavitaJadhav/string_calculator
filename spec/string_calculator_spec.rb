@@ -69,6 +69,12 @@ RSpec.describe StringCalculator, 'model' do
         expect(string_calculator.add("//[**][%%]\n1**2%%3")).to eq(6)
       end
     end
+
+    context 'when * is provided before delimeters' do
+      it 'should multiply numbers given' do
+        expect(string_calculator.add("*//[**][%%]\n1**2%%3**4")).to eq(24)
+      end
+    end
   end
 
   describe '#called_count' do
